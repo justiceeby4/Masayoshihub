@@ -182,7 +182,7 @@ export default function Home() {
           <div><h4>Company</h4><a href="#">About</a><a href="#">Contact</a><a href="#">Help center</a></div>
           <div><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Refund policy</a></div>
         </div>
-        <div className="container footer-bottom"><span>© 2026 ActiveHub. All rights reserved.</span><span>Made for a better digital shopping experience.</span></div>
+        <div className="container footer-bottom"><span>© 2026 MasayoshiHub. All rights reserved.</span><span>Made for a better digital shopping experience.</span></div>
       </footer>
     </main>
   );
