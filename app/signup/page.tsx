@@ -1,16 +1,36 @@
-
 "use client";
 
 import { useState } from "react";
+import { createClient } from "../../utils/supabase/client";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
 
-    alert("Signup button works!");
+    const supabase = createClient();
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      setMessage(error.message);
+      setLoading(false);
+      return;
+    }
+
+    setMessage(
+      "Account created! Please check your email to confirm your account."
+    );
+    setLoading(false);
   }
 
   return (
@@ -80,14 +100,15 @@ export default function SignupPage() {
               marginBottom: "24px",
               borderRadius: "10px",
               border: "1px solid #374151",
-              background: "#0b0f19",
-              color: "white",
+              background: "#ffffff",
+              color: "#000000",
               boxSizing: "border-box",
             }}
           />
 
           <button
             type="submit"
+            disabled={loading}
             style={{
               width: "100%",
               padding: "14px",
@@ -99,9 +120,21 @@ export default function SignupPage() {
               cursor: "pointer",
             }}
           >
-            Create account
+            {loading ? "Creating account..." : "Create account"}
           </button>
         </form>
+
+        {message && (
+          <p
+            style={{
+              marginTop: "20px",
+              color: "#9ca3af",
+              lineHeight: "1.5",
+            }}
+          >
+            {message}
+          </p>
+        )}
       </div>
     </main>
   );
