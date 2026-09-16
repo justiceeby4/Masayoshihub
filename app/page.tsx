@@ -155,7 +155,7 @@ export default function Home() {
       <section className="why" id="how">
         <div className="container why-grid">
           <div>
-            <span className="section-kicker">WHY ACTIVEHUB</span>
+            <span className="section-kicker">WHY MASAYOSHIHUB</span>
             <h2>Built around a better<br />way to shop digital.</h2>
             <p>We keep the buying experience straightforward: verified sellers, transparent pricing and delivery that happens when you need it.</p>
             <a className="primary-btn small" href="#">Start shopping <ArrowRight size={17} /></a>
