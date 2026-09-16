@@ -43,6 +43,7 @@ export default function Home() {
           <a href="#" className="brand">
             <span className="brand-mark">A</span>
             <span>Masayoshihub</span>
+            </a>
 
           <nav className="desktop-nav">
             <a href="#categories">Categories</a>
