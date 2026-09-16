@@ -188,4 +188,3 @@ export default function Home() {
     </main>
   );
                   }
-      // MasayoshiHub
