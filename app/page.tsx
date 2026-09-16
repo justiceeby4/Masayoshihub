@@ -53,7 +53,7 @@ export default function Home() {
           <div className="nav-actions">
             <button className="icon-btn" aria-label="Search"><Search size={20} /></button>
             <a href="#" className="login">Log in</a>
-            <a href="#" className="signup">Create account</a>
+            <a href="/signup" className="signup">Create account</a>
             <button className="menu-btn" aria-label="Menu"><Menu size={22} /></button>
           </div>
         </div>
