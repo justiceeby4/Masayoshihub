@@ -42,7 +42,7 @@ export default function Home() {
         <div className="container nav">
           <a href="#" className="brand">
             <span className="brand-mark">A</span>
-            <span>Active<span>Hub</span></span>
+            <span>Masayoshi<span>Hub</span></span>
           </a>
 
           <nav className="desktop-nav">
