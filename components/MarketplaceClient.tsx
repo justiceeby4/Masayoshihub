@@ -30,19 +30,22 @@ export default function MarketplaceClient({
     useState(initialCategory || "All");
 
   const filtered = useMemo(
-    () =>
-      products.filter(
-        (p) =>
-          (category === "All" ||
-            p.category === category) &&
-          `${p.title} ${p.category}`
-            .toLowerCase()
-            .includes(
-              query.toLowerCase()
-            )
-      ),
-    [query, category]
-  );
+  () =>
+    products.filter((p) => {
+      const matchesCategory =
+        category === "All" ||
+        p.category === category ||
+        p.subcategory === category;
+
+      const text =
+        `${p.title} ${p.category} ${p.subcategory ?? ""}`.toLowerCase();
+
+      const matchesSearch = text.includes(query.toLowerCase());
+
+      return matchesCategory && matchesSearch;
+    }),
+  [query, category]
+);
 
   return (
     <div>
