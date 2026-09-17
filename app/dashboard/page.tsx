@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
 
 export default function DashboardPage() {
   const accountCategories = [
