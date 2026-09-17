@@ -114,7 +114,10 @@ export default function DashboardPage() {
               margin: 0,
             }}
           >
-            ₦0.00
+            ₦{balance.toLocaleString("en-NG", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+})}
           </h2>
         </section>
 
