@@ -5,6 +5,24 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 
 export default function DashboardPage() {
+    const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    const loadBalance = async () => {
+      const supabase = createClient();
+
+      const { data, error } = await supabase.rpc(
+        "get_my_wallet_balance"
+      );
+
+      if (!error && data !== null) {
+        setBalance(Number(data));
+      }
+    };
+
+    loadBalance();
+  }, []);
+  
   const accountCategories = [
     {
       name: "Digital Accounts",
