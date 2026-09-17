@@ -1,10 +1,10 @@
 export const categories = [
-  { name: "Digital Accounts" },
-  { name: "Subscriptions" },
-  { name: "Gift Cards" },
-  { name: "Software" },
-  { name: "Games" },
-  { name: "Services" },
+  { name: "Digital Accounts", icon: "👤", count: 0 },
+  { name: "Subscriptions", icon: "📺", count: 1 },
+  { name: "Gift Cards", icon: "🎁", count: 1 },
+  { name: "Software", icon: "💻", count: 1 },
+  { name: "Games", icon: "🎮", count: 0 },
+  { name: "Services", icon: "🛠️", count: 1 },
 ];
 
 export const products = [
