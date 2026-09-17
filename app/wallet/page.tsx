@@ -6,6 +6,9 @@ import { createClient } from "@/utils/supabase/client";
 
 export default function WalletPage() {
   const [balance, setBalance] = useState(0);
+  const [amount, setAmount] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const loadBalance = async () => {
@@ -22,6 +25,52 @@ export default function WalletPage() {
 
     loadBalance();
   }, []);
+
+  const handleAddMoney = async () => {
+    setErrorMessage("");
+
+    const amountNumber = Number(amount);
+
+    if (
+      !Number.isFinite(amountNumber) ||
+      !Number.isInteger(amountNumber) ||
+      amountNumber < 100
+    ) {
+      setErrorMessage("Enter an amount of at least ₦100.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch("/api/paystack/initialize", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: amountNumber,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        setErrorMessage(
+          result.error || "Unable to start payment."
+        );
+        return;
+      }
+
+      window.location.href = result.authorization_url;
+    } catch {
+      setErrorMessage(
+        "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main
@@ -126,23 +175,58 @@ export default function WalletPage() {
               marginBottom: "20px",
             }}
           >
-            Add money to your wallet to make purchases on MasayoshiHub.
+            Add money to your wallet to make purchases on
+            MasayoshiHub.
           </p>
 
-          <button
-            disabled
+          <input
+            type="number"
+            min="100"
+            step="1"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Enter amount (₦)"
             style={{
+              width: "100%",
+              boxSizing: "border-box",
+              padding: "14px 16px",
+              borderRadius: "10px",
+              border: "1px solid #374151",
+              background: "#0b0f19",
+              color: "white",
+              fontSize: "16px",
+              marginBottom: "14px",
+            }}
+          />
+
+          {errorMessage && (
+            <p
+              style={{
+                color: "#f87171",
+                marginBottom: "14px",
+              }}
+            >
+              {errorMessage}
+            </p>
+          )}
+
+          <button
+            onClick={handleAddMoney}
+            disabled={loading}
+            style={{
+              width: "100%",
               padding: "14px 20px",
               borderRadius: "10px",
               border: "none",
               background: "#6d3df5",
               color: "white",
               fontWeight: 700,
-              cursor: "not-allowed",
-              opacity: 0.7,
+              fontSize: "16px",
+              cursor: loading ? "not-allowed" : "pointer",
+              opacity: loading ? 0.7 : 1,
             }}
           >
-            Add Money
+            {loading ? "Opening Paystack..." : "Add Money"}
           </button>
 
           <p
@@ -152,7 +236,7 @@ export default function WalletPage() {
               marginTop: "14px",
             }}
           >
-            Wallet funding will be connected to secure payment processing.
+            Minimum wallet funding amount: ₦100.
           </p>
         </section>
       </div>
