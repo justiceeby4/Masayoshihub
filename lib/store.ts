@@ -53,3 +53,7 @@ export const products = [
 export function money(value: number) {
   return `$${value.toFixed(2)}`;
 }
+
+export function getProduct(slug: string) {
+  return products.find((product) => product.slug === slug);
+}
