@@ -1,8 +1,8 @@
 export const categories = [
   {
-    name: "Digital Accounts",
+    name: "Buy Accounts",
     icon: "◉",
-    count: "Available",
+    count: "Unlimited",
   },
   {
     name: "Subscriptions",
