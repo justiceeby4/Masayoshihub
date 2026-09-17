@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-const services = {
+const services: Record<string, Record<string, { rate: number; minimum: number }>> = {
   TikTok: {
     Followers: { rate: 5999, minimum: 100 },
     Likes: { rate: 1499, minimum: 100 },
