@@ -119,7 +119,22 @@ export default function DashboardPage() {
   maximumFractionDigits: 2,
 })}
           </h2>
-        </section>
+              <Link
+        href="/wallet"
+        style={{
+          display: "inline-block",
+          marginTop: "18px",
+          padding: "12px 20px",
+          borderRadius: "10px",
+          background: "#6d3df5",
+          color: "white",
+          textDecoration: "none",
+          fontWeight: "600",
+        }}
+      >
+        Fund Wallet
+      </Link>
+    </section>
 
         <h2
           style={{
