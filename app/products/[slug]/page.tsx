@@ -84,6 +84,8 @@ export default async function ProductPage({
             </div>
 
             <AddToCartButton product={p} />
+            
+            {p.slug === "social-media-boosting" && <BoostingSelector />}
           </div>
         </div>
       </div>
