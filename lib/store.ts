@@ -54,6 +54,8 @@ export const products = [
   },
 ];
 
+export type Product = (typeof products)[number];
+
 export function money(value: number) {
   return `₦${value.toLocaleString("en-NG")}`;
 }
