@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
+import { createClient } from "../utils/supabase/client";
 
 const NAV_LINKS = [
   { href: "/categories", label: "Categories" },
@@ -12,6 +13,32 @@ const NAV_LINKS = [
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data }) => {
+      setLoggedIn(!!data.user);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setLoggedIn(!!session?.user);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  async function handleLogout() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    setLoggedIn(false);
+    setOpen(false);
+  }
 
   return (
     <>
@@ -26,7 +53,9 @@ export default function SiteHeader() {
         <div className="container nav">
           <Link href="/" className="brand">
             <span className="brand-mark">M</span>
-            <span>Masayoshi<span>Hub</span></span>
+            <span>
+              Masayoshi<span className="brand-purple">Hub</span>
+            </span>
           </Link>
 
           <nav className="desktop-nav">
@@ -41,12 +70,33 @@ export default function SiteHeader() {
             <Link href="/cart" className="icon-btn" aria-label="Cart">
               <ShoppingCart size={17} />
             </Link>
-            <Link href="/login" className="login">
-              Log in
-            </Link>
-            <Link href="/signup" className="signup">
-              Create account
-            </Link>
+
+            {loggedIn ? (
+              <>
+                <Link href="/dashboard" className="login">
+                  Dashboard
+                </Link>
+
+                <button
+                  type="button"
+                  className="signup"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="login">
+                  Log in
+                </Link>
+
+                <Link href="/signup" className="signup">
+                  Create account
+                </Link>
+              </>
+            )}
+
             <button
               type="button"
               className="icon-btn menu-btn"
@@ -54,7 +104,7 @@ export default function SiteHeader() {
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
-              {open ? <X size={18} /> : <Menu size={18} />}
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -62,20 +112,51 @@ export default function SiteHeader() {
         {open && (
           <div className="mobile-menu">
             {NAV_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+              >
                 {link.label}
               </Link>
             ))}
-            <Link href="/login" onClick={() => setOpen(false)}>
-              Log in
-            </Link>
-            <Link href="/signup" onClick={() => setOpen(false)}>
-              Create account
-            </Link>
+
+            {loggedIn ? (
+              <>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setOpen(false)}
+                >
+                  Dashboard
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  onClick={() => setOpen(false)}
+                >
+                  Log in
+                </Link>
+
+                <Link
+                  href="/signup"
+                  onClick={() => setOpen(false)}
+                >
+                  Create account
+                </Link>
+              </>
+            )}
           </div>
         )}
       </header>
     </>
   );
 }
-
