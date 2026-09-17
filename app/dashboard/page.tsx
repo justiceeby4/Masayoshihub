@@ -1,5 +1,6 @@
-
 "use client";
+
+import Link from "next/link";
 
 export default function DashboardPage() {
   const accountCategories = [
@@ -22,6 +23,16 @@ export default function DashboardPage() {
       name: "Software",
       description: "Your software purchases",
       icon: "▣",
+    },
+    {
+      name: "Games",
+      description: "Your purchased games",
+      icon: "◈",
+    },
+    {
+      name: "Services",
+      description: "Your purchased services",
+      icon: "⚡",
     },
   ];
 
@@ -83,7 +94,7 @@ export default function DashboardPage() {
               margin: 0,
             }}
           >
-            ₦0
+            ₦0.00
           </h2>
         </section>
 
@@ -99,47 +110,53 @@ export default function DashboardPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: "16px",
           }}
         >
-          {accountCategories.map((account) => (
-            <div
-              key={account.name}
+          {accountCategories.map((category) => (
+            <Link
+              key={category.name}
+              href={`/marketplace?category=${encodeURIComponent(
+                category.name
+              )}`}
               style={{
-                padding: "24px",
+                display: "block",
+                padding: "22px",
                 borderRadius: "16px",
                 background: "#111827",
                 border: "1px solid #263244",
+                color: "white",
+                textDecoration: "none",
               }}
             >
               <div
                 style={{
-                  fontSize: "30px",
-                  marginBottom: "16px",
+                  fontSize: "28px",
+                  marginBottom: "12px",
                 }}
               >
-                {account.icon}
+                {category.icon}
               </div>
 
               <h3
                 style={{
+                  margin: "0 0 8px",
                   fontSize: "20px",
-                  marginBottom: "8px",
                 }}
               >
-                {account.name}
+                {category.name}
               </h3>
 
               <p
                 style={{
-                  color: "#9ca3af",
                   margin: 0,
+                  color: "#9ca3af",
                 }}
               >
-                {account.description}
+                {category.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
