@@ -1,12 +1,35 @@
 export const categories = [
-  { name: "Digital Accounts", icon: "👤", count: 170 },
-  { name: "Subscriptions", icon: "📺", count: 1 },
-  { name: "Gift Cards", icon: "🎁", count: 1 },
-  { name: "Software", icon: "💻", count: 1 },
-  { name: "Games", icon: "🎮", count: 0 },
-  { name: "Services", icon: "🛠️", count: 1 },
+  {
+    name: "Digital Accounts",
+    icon: "◉",
+    count: "Available",
+  },
+  {
+    name: "Subscriptions",
+    icon: "✦",
+    count: "Unlimited",
+  },
+  {
+    name: "Gift Cards",
+    icon: "🎁",
+    count: "Unavailable",
+  },
+  {
+    name: "Software",
+    icon: "▣",
+    count: "Unavailable",
+  },
+  {
+    name: "Games",
+    icon: "◈",
+    count: "Unavailable",
+  },
+  {
+    name: "Services",
+    icon: "⚡",
+    count: "Unlimited",
+  },
 ];
-
 export const products = [
   {
     id: "premium-streaming",
