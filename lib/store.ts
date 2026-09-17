@@ -117,3 +117,11 @@ export const products = [
     rating: 4.8,
   },
 ];
+
+export function money(value: number) {
+  return `₦${value.toLocaleString("en-NG")}`;
+}
+
+export function getProduct(slug: string) {
+  return products.find((product) => product.slug === slug);
+}
