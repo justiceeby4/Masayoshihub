@@ -55,7 +55,7 @@ export const products = [
 ];
 
 export function money(value: number) {
-  return `$${value.toFixed(2)}`;
+  return `₦${value.toLocaleString("en-NG")}`;
 }
 
 export function getProduct(slug: string) {
