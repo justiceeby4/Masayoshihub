@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import BoostingSelector from "@/components/BoostingSelector";
 import Link from "next/link";
 import {
   ArrowLeft,
