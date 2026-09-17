@@ -401,7 +401,6 @@ export const products = [
     badge: "Available",
     rating: 4.8,
   },
-    },
   {
     id: "social-media-boosting",
     description: "TikTok, Instagram and Facebook followers, likes, views and shares.",
