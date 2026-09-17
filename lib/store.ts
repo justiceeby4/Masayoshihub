@@ -10,6 +10,7 @@ export const categories = [
 export const products = [
   {
     id: "premium-streaming",
+    description: "Premium streaming access for your favorite entertainment.",
     slug: "premium-streaming",
     title: "Premium Streaming Access",
     category: "Subscriptions",
@@ -20,6 +21,7 @@ export const products = [
   },
   {
     id: "cloud-storage",
+    description: "Extra cloud storage for your files, photos, and projects.",
     slug: "cloud-storage",
     title: "Cloud Storage Pro",
     category: "Software",
@@ -30,6 +32,7 @@ export const products = [
   },
   {
     id: "digital-gift-card",
+    description: "A convenient digital gift card for online purchases.",
     slug: "digital-gift-card",
     title: "Digital Gift Card",
     category: "Gift Cards",
@@ -40,6 +43,7 @@ export const products = [
   },
   {
     id: "creator-toolkit",
+    description: "Useful digital tools and resources for creators.",
     slug: "creator-toolkit",
     title: "Creator Toolkit",
     category: "Services",
