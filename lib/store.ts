@@ -401,6 +401,23 @@ export const products = [
     badge: "Available",
     rating: 4.8,
   },
+    },
+  {
+    id: "social-media-boosting",
+    description: "TikTok, Instagram and Facebook followers, likes, views and shares.",
+    slug: "social-media-boosting",
+    title: "Social Media Boosting",
+    category: "Services",
+    subcategory: "Social Media",
+    price: 599,
+    old: 0,
+    tone: "purple",
+    badge: "Available",
+    rating: 4.8,
+  },
+];
+
+export type Product = (typeof products)[number];
 ];
 
 export type Product = (typeof products)[number];
