@@ -23,7 +23,7 @@ export default function Categories() {
 
               <div>
                 <h3>{c.name}</h3>
-                <p>{c.count} products</p>
+                <p>{c.count}</p>
               </div>
 
               <ChevronRight className="cat-arrow" size={18} />
