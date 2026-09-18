@@ -83,7 +83,7 @@ export default async function ProductPage({
               Secure checkout interface • Digital delivery
             </div>
 
-            <AddToCartButton product={p} />
+            <BuyButton product={p} />
             
             {p.slug === "social-media-boosting" && <BoostingSelector />}
           </div>
