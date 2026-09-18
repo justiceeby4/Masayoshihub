@@ -5,6 +5,7 @@ import { createClient } from "../../utils/supabase/client";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
