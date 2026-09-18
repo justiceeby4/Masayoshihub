@@ -267,7 +267,7 @@ export default function DashboardPage() {
                   background: "rgba(255,255,255,0.12)",
                   border:
                     "1px solid rgba(255,255,255,0.22)",
-                  color: "white",
+                  color: "#4f35dc",
                   textDecoration: "none",
                   fontWeight: 700,
                 }}
