@@ -228,6 +228,7 @@ export default function DashboardPage() {
                     "1px solid rgba(255,255,255,0.25)",
                   fontWeight: 700,
                   fontSize: "14px",
+                  color: "#17152a",
                 }}
               >
                 🇳🇬 NGN
