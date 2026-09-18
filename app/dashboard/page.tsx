@@ -403,16 +403,94 @@ setUsername(user?.user_metadata?.username ?? "");
             Activity History
           </h2>
 
-          <p
+          {transactions.length === 0 ? (
+  <p
+    style={{
+      margin: 0,
+      color: "#8f9aae",
+      fontSize: "14px",
+    }}
+  >
+    No transactions yet.
+  </p>
+) : (
+  <div
+    style={{
+      display: "grid",
+      gap: "12px",
+    }}
+  >
+    {transactions.map((transaction) => (
+      <div
+        key={transaction.id}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "14px",
+          borderRadius: "14px",
+          background: "#171c24",
+          border: "1px solid #243148",
+        }}
+      >
+        <div>
+          <div
             style={{
-              margin: 0,
-              color: "#8f9aae",
-              fontSize: "14px",
+              fontWeight: 600,
+              marginBottom: "4px",
             }}
           >
-            Your wallet and purchase activity will appear
-            here.
-          </p>
+            {transaction.type}
+          </div>
+
+          <div
+            style={{
+              color: "#8f9aae",
+              fontSize: "13px",
+            }}
+          >
+            {transaction.reference || "Wallet transaction"}
+          </div>
+
+          <div
+            style={{
+              color: "#8f9aae",
+              fontSize: "12px",
+              marginTop: "4px",
+            }}
+          >
+            {new Date(transaction.created_at).toLocaleString()}
+          </div>
+        </div>
+
+        <div style={{ textAlign: "right" }}>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: "16px",
+            }}
+          >
+            {Number(transaction.amount).toLocaleString()}{" "}
+            {transaction.currency}
+          </div>
+
+          <div
+            style={{
+              color:
+                transaction.status === "success"
+                  ? "#4ade80"
+                  : "#f59e0b",
+              fontSize: "12px",
+              marginTop: "4px",
+            }}
+          >
+            {transaction.status}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
         </section>
       </div>
 
