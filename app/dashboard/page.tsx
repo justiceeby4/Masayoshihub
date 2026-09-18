@@ -7,6 +7,7 @@ import { createClient } from "@/utils/supabase/client";
 export default function DashboardPage() {
   const [balance, setBalance] = useState(0);
   const [username, setUsername] = useState("");
+  const [transactions, setTransactions] = useState<any[]>([]);
 
   useEffect(() => {
     const loadBalance = async () => {
@@ -15,7 +16,16 @@ export default function DashboardPage() {
       const { data, error } = await supabase.rpc(
         "get_my_wallet_balance"
       );
+       const { data: transactionData, error: transactionError } =
+  await supabase
+    .from("wallet_transactions")
+    .select("id, amount, currency, status, type, reference, created_at")
+    .order("created_at", { ascending: false })
+    .limit(20);
 
+if (!transactionError) {
+  setTransactions(transactionData ?? []);
+}
     const {
   data: { user },
 } = await supabase.auth.getUser();
