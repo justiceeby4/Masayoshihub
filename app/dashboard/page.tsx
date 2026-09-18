@@ -16,6 +16,12 @@ export default function DashboardPage() {
         "get_my_wallet_balance"
       );
 
+    const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+setUsername(user?.user_metadata?.username ?? "");
+
       if (!error && data !== null) {
         setBalance(Number(data));
       }
