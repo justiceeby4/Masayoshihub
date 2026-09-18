@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 
 export default function DashboardPage() {
   const [balance, setBalance] = useState(0);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const loadBalance = async () => {
