@@ -408,7 +408,7 @@ export const products = [
     title: "Social Media Boosting",
     category: "Services",
     subcategory: "Social Media",
-    price: 599,
+    price: 0,
     old: 0,
     tone: "purple",
     badge: "Available",
