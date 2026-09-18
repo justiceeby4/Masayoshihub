@@ -10,7 +10,7 @@ import {
   getProduct,
   money,
 } from "@/lib/store";
-import AddToCartButton from "@/components/AddToCartButton";
+import BuyButton from "@/components/BuyButton";
 
 export default async function ProductPage({
   params,
