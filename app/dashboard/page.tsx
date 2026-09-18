@@ -5,7 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 
 export default function DashboardPage() {
-    const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     const loadBalance = async () => {
@@ -22,37 +22,42 @@ export default function DashboardPage() {
 
     loadBalance();
   }, []);
-  
-  const accountCategories = [
+
+  const quickActions = [
     {
-      name: "Digital Accounts",
-      description: "Your purchased digital accounts",
-      icon: "◉",
+      name: "Buy Account",
+      icon: "🛒",
+      href: "/marketplace?category=Buy%20Accounts",
+      description: "Digital accounts",
+      color: "#7040f5",
+    },
+    {
+      name: "Buy Numbers",
+      icon: "📞",
+      href: "/marketplace?category=Foreign%20USA%20Numbers",
+      description: "Foreign numbers",
+      color: "#2878ee",
+    },
+    {
+      name: "Boost Followers",
+      icon: "❤️",
+      href: "/products/social-media-boosting",
+      description: "Social services",
+      color: "#e83b82",
+    },
+    {
+      name: "Giftcard",
+      icon: "🎁",
+      href: "/marketplace?category=Gift%20Cards",
+      description: "Gift cards",
+      color: "#f28b00",
     },
     {
       name: "Subscriptions",
-      description: "Your active subscriptions",
-      icon: "✦",
-    },
-    {
-      name: "Gift Cards",
-      description: "Your purchased gift cards",
-      icon: "🎁",
-    },
-    {
-      name: "Software",
-      description: "Your software purchases",
-      icon: "▣",
-    },
-    {
-      name: "Games",
-      description: "Your purchased games",
-      icon: "◈",
-    },
-    {
-      name: "Services",
-      description: "Your purchased services",
-      icon: "⚡",
+      icon: "🎫",
+      href: "/marketplace?category=VPN%20Services",
+      description: "Subscriptions",
+      color: "#7040f5",
     },
   ];
 
@@ -60,144 +65,438 @@ export default function DashboardPage() {
     <main
       style={{
         minHeight: "100vh",
-        padding: "40px 24px",
-        background: "#0b0f19",
+        background: "#080d18",
         color: "white",
+        paddingBottom: "110px",
       }}
     >
       <div
         style={{
           maxWidth: "1000px",
           margin: "0 auto",
+          padding: "18px 18px 40px",
         }}
       >
-        <h1
-          style={{
-            fontSize: "40px",
-            marginBottom: "10px",
-          }}
-        >
-          Welcome to your dashboard
-        </h1>
-
-        <p
-          style={{
-            color: "#9ca3af",
-            fontSize: "18px",
-            marginBottom: "32px",
-          }}
-        >
-          Manage your MasayoshiHub account and purchases.
-        </p>
-
-        <section
-          style={{
-            padding: "28px",
-            borderRadius: "20px",
-            background: "#111827",
-            border: "1px solid #263244",
-            marginBottom: "32px",
-          }}
-        >
-          <p
-            style={{
-              color: "#9ca3af",
-              marginBottom: "8px",
-            }}
-          >
-            Your Balance
-          </p>
-
-          <h2
-            style={{
-              fontSize: "36px",
-              margin: 0,
-            }}
-          >
-            ₦{balance.toLocaleString("en-NG", {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-})}
-          </h2>
-              <Link
-        href="/wallet"
-        style={{
-          display: "inline-block",
-          marginTop: "18px",
-          padding: "12px 20px",
-          borderRadius: "10px",
-          background: "#6d3df5",
-          color: "white",
-          textDecoration: "none",
-          fontWeight: "600",
-        }}
-      >
-        Fund Wallet
-      </Link>
-    </section>
-
-        <h2
-          style={{
-            fontSize: "28px",
-            marginBottom: "20px",
-          }}
-        >
-          Your Accounts
-        </h2>
-
+        {/* Announcement */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "16px",
+            marginBottom: "22px",
+            padding: "13px 16px",
+            borderRadius: "14px",
+            background:
+              "linear-gradient(90deg, #5730e8, #7040f5)",
+            fontSize: "14px",
+            fontWeight: 700,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
           }}
         >
-          {accountCategories.map((category) => (
-            <Link
-              key={category.name}
-              href={`/marketplace?category=${encodeURIComponent(
-                category.name
-              )}`}
+          ✨ New stock just dropped • Fast delivery • Secure
+          checkout
+        </div>
+
+        {/* Welcome */}
+        <section
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            padding: "30px",
+            borderRadius: "28px",
+            marginBottom: "28px",
+            background:
+              "linear-gradient(135deg, #4f35dc 0%, #7040f5 55%, #3923a8 100%)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            boxShadow: "0 20px 50px rgba(0,0,0,0.25)",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              width: "280px",
+              height: "280px",
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.08)",
+              right: "-100px",
+              top: "-100px",
+            }}
+          />
+
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              marginBottom: "26px",
+            }}
+          >
+            <div
               style={{
-                display: "block",
-                padding: "22px",
-                borderRadius: "16px",
-                background: "#111827",
-                border: "1px solid #263244",
-                color: "white",
-                textDecoration: "none",
+                width: "68px",
+                height: "68px",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(255,255,255,0.18)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                fontSize: "30px",
+                fontWeight: 800,
               }}
             >
-              <div
-                style={{
-                  fontSize: "28px",
-                  marginBottom: "12px",
-                }}
-              >
-                {category.icon}
-              </div>
+              U
+            </div>
 
-              <h3
+            <div>
+              <h1
                 style={{
-                  margin: "0 0 8px",
-                  fontSize: "20px",
+                  margin: 0,
+                  fontSize: "30px",
+                  lineHeight: 1.1,
                 }}
               >
-                {category.name}
-              </h3>
+                Welcome back! 👋
+              </h1>
 
               <p
                 style={{
-                  margin: 0,
-                  color: "#9ca3af",
+                  margin: "7px 0 0",
+                  color: "rgba(255,255,255,0.75)",
+                  fontSize: "15px",
                 }}
               >
-                {category.description}
+                Manage your MasayoshiHub account
               </p>
-            </Link>
-          ))}
-        </div>
+            </div>
+          </div>
+
+          {/* Balance */}
+          <div
+            style={{
+              position: "relative",
+              padding: "22px",
+              borderRadius: "22px",
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "rgba(255,255,255,0.7)",
+                    fontSize: "13px",
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  Available Balance
+                </p>
+
+                <h2
+                  style={{
+                    margin: "8px 0 0",
+                    fontSize: "38px",
+                    lineHeight: 1,
+                  }}
+                >
+                  ₦
+                  {balance.toLocaleString("en-NG", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </h2>
+              </div>
+
+              <div
+                style={{
+                  padding: "9px 14px",
+                  borderRadius: "999px",
+                  background: "rgba(255,255,255,0.16)",
+                  border:
+                    "1px solid rgba(255,255,255,0.25)",
+                  fontWeight: 700,
+                  fontSize: "14px",
+                }}
+              >
+                🇳🇬 NGN
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px",
+                marginTop: "22px",
+              }}
+            >
+              <Link
+                href="/wallet"
+                style={{
+                  display: "inline-block",
+                  padding: "13px 20px",
+                  borderRadius: "13px",
+                  background: "white",
+                  color: "#4f35dc",
+                  textDecoration: "none",
+                  fontWeight: 800,
+                }}
+              >
+                + Add Money
+              </Link>
+
+              <Link
+                href="#history"
+                style={{
+                  display: "inline-block",
+                  padding: "13px 20px",
+                  borderRadius: "13px",
+                  background: "rgba(255,255,255,0.12)",
+                  border:
+                    "1px solid rgba(255,255,255,0.22)",
+                  color: "white",
+                  textDecoration: "none",
+                  fontWeight: 700,
+                }}
+              >
+                ◷ Activity History
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Actions */}
+        <section>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "16px",
+            }}
+          >
+            <h2
+              style={{
+                margin: 0,
+                fontSize: "25px",
+              }}
+            >
+              Quick Actions
+            </h2>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(150px, 1fr))",
+              gap: "14px",
+            }}
+          >
+            {quickActions.map((action) => (
+              <Link
+                key={action.name}
+                href={action.href}
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  padding: "20px 14px",
+                  minHeight: "145px",
+                  borderRadius: "22px",
+                  background: "#131c2c",
+                  border: "1px solid #243148",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "58px",
+                    height: "58px",
+                    borderRadius: "18px",
+                    background: action.color,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "27px",
+                    marginBottom: "13px",
+                    boxShadow:
+                      "0 8px 20px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  {action.icon}
+                </div>
+
+                <strong
+                  style={{
+                    fontSize: "15px",
+                  }}
+                >
+                  {action.name}
+                </strong>
+
+                <span
+                  style={{
+                    marginTop: "5px",
+                    color: "#8f9aae",
+                    fontSize: "12px",
+                  }}
+                >
+                  {action.description}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Activity placeholder area */}
+        <section
+          id="history"
+          style={{
+            marginTop: "30px",
+            padding: "22px",
+            borderRadius: "22px",
+            background: "#111a29",
+            border: "1px solid #243148",
+          }}
+        >
+          <h2
+            style={{
+              margin: "0 0 8px",
+              fontSize: "21px",
+            }}
+          >
+            Activity History
+          </h2>
+
+          <p
+            style={{
+              margin: 0,
+              color: "#8f9aae",
+              fontSize: "14px",
+            }}
+          >
+            Your wallet and purchase activity will appear
+            here.
+          </p>
+        </section>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <nav
+        style={{
+          position: "fixed",
+          left: "12px",
+          right: "12px",
+          bottom: "12px",
+          zIndex: 50,
+          maxWidth: "700px",
+          margin: "0 auto",
+          padding: "10px 8px",
+          borderRadius: "26px",
+          background: "rgba(17,26,41,0.96)",
+          border: "1px solid #29364d",
+          boxShadow: "0 15px 40px rgba(0,0,0,0.4)",
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(5, 1fr)",
+          alignItems: "center",
+          backdropFilter: "blur(14px)",
+        }}
+      >
+        <Link
+          href="/dashboard"
+          style={{
+            textDecoration: "none",
+            color: "#aeb8ca",
+            textAlign: "center",
+            fontSize: "12px",
+            fontWeight: 700,
+            padding: "8px 2px",
+          }}
+        >
+          <div style={{ fontSize: "21px" }}>⌂</div>
+          Home
+        </Link>
+
+        <Link
+          href="#history"
+          style={{
+            textDecoration: "none",
+            color: "#aeb8ca",
+            textAlign: "center",
+            fontSize: "12px",
+            fontWeight: 700,
+            padding: "8px 2px",
+          }}
+        >
+          <div style={{ fontSize: "21px" }}>◷</div>
+          History
+        </Link>
+
+        <Link
+          href="/wallet"
+          style={{
+            textDecoration: "none",
+            color: "white",
+            textAlign: "center",
+            fontSize: "12px",
+            fontWeight: 800,
+            padding: "10px 4px",
+            borderRadius: "18px",
+            background:
+              "linear-gradient(135deg, #6738ee, #8050ff)",
+            boxShadow:
+              "0 8px 20px rgba(103,56,238,0.35)",
+          }}
+        >
+          <div style={{ fontSize: "25px" }}>＋</div>
+          Add Money
+        </Link>
+
+        <Link
+          href="/marketplace?category=Services"
+          style={{
+            textDecoration: "none",
+            color: "#aeb8ca",
+            textAlign: "center",
+            fontSize: "12px",
+            fontWeight: 700,
+            padding: "8px 2px",
+          }}
+        >
+          <div style={{ fontSize: "21px" }}>▦</div>
+          Services
+        </Link>
+
+        <Link
+          href="/dashboard"
+          style={{
+            textDecoration: "none",
+            color: "#aeb8ca",
+            textAlign: "center",
+            fontSize: "12px",
+            fontWeight: 700,
+            padding: "8px 2px",
+          }}
+        >
+          <div style={{ fontSize: "21px" }}>◎</div>
+          Profile
+        </Link>
+      </nav>
     </main>
   );
 }
