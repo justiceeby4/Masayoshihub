@@ -83,7 +83,9 @@ export default async function ProductPage({
               Secure checkout interface • Digital delivery
             </div>
 
-            <BuyButton product={p} />
+            {p.slug !== "social-media-boosting" && (
+  <BuyButton product={p} />
+)}
             
             {p.slug === "social-media-boosting" && <BoostingSelector />}
           </div>
