@@ -193,7 +193,7 @@ export default function DashboardPage() {
                 <p
                   style={{
                     margin: 0,
-                    color: "rgba(255,255,255,0.7)",
+                    color: "#6b6878",
                     fontSize: "13px",
                     fontWeight: 800,
                     textTransform: "uppercase",
