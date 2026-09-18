@@ -144,8 +144,10 @@ export default function MarketplaceClient({
               <div className="product-bottom">
                 <div>
                   <strong>
-                    {money(p.price)}
-                  </strong>
+  {p.slug === "social-media-boosting"
+    ? "Select service"
+    : money(p.price)}
+</strong>
 
                   {p.old && (
                     <del>
