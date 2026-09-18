@@ -65,18 +65,19 @@ export default async function ProductPage({
 
             <p>{p.description}</p>
 
-            <div className="detail-price">
-              <strong>
-                {money(p.price)}
-              </strong>
+            {p.slug !== "social-media-boosting" && (
+  <div className="detail-price">
+    <strong>
+      {money(p.price)}
+    </strong>
 
-              {p.old && (
-                <del>
-                  {money(p.old)}
-                </del>
-              )}
-            </div>
-
+    {p.old && (
+      <del>
+        {money(p.old)}
+      </del>
+    )}
+  </div>
+)}
             <div className="secure-note">
               <ShieldCheck size={18} />
 
