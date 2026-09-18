@@ -292,6 +292,7 @@ export default function DashboardPage() {
               style={{
                 margin: 0,
                 fontSize: "25px",
+                color: "#17152a",
               }}
             >
               Quick Actions
