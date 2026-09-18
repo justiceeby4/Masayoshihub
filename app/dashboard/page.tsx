@@ -17,11 +17,7 @@ export default function DashboardPage() {
         "get_my_wallet_balance"
       );
        const { data: transactionData, error: transactionError } =
-  await supabase
-    .from("wallet_transactions")
-    .select("id, amount, currency, status, type, reference, created_at")
-    .order("created_at", { ascending: false })
-    .limit(20);
+  await supabase.rpc("get_my_wallet_transactions");
 
 if (!transactionError) {
   setTransactions(transactionData ?? []);
