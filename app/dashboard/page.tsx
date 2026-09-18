@@ -151,7 +151,7 @@ setUsername(user?.user_metadata?.username ?? "");
                 fontWeight: 800,
               }}
             >
-              U
+              {username?.charAt(0).toUpperCase() || "U"}
             </div>
 
             <div>
