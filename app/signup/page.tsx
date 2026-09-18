@@ -18,9 +18,14 @@ export default function SignupPage() {
     const supabase = createClient();
 
     const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+  email,
+  password,
+  options: {
+    data: {
+      username,
+    },
+  },
+});
 
     if (error) {
       setMessage(error.message);
@@ -65,6 +70,26 @@ export default function SignupPage() {
         </p>
 
         <form onSubmit={handleSubmit}>
+          <label>Username</label>
+
+<input
+  type="text"
+  placeholder="Choose a username"
+  value={username}
+  onChange={(e) => setUsername(e.target.value)}
+  required
+  style={{
+    width: "100%",
+    padding: "14px",
+    marginTop: "8px",
+    marginBottom: "20px",
+    borderRadius: "10px",
+    border: "1px solid #374151",
+    background: "#0b0f19",
+    color: "white",
+    boxSizing: "border-box",
+  }}
+/>
           <label>Email address</label>
 
           <input
