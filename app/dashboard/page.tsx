@@ -104,7 +104,7 @@ export default function DashboardPage() {
             borderRadius: "28px",
             marginBottom: "28px",
             background:
-              "linear-gradient(135deg, #4f35dc 0%, #7040f5 55%, #3923a8 100%)",
+              "linear-gradient(135deg, #ffffff 0%, #f3edff 55%, #e9ddff 100%)",
             border: "1px solid rgba(255,255,255,0.15)",
             boxShadow: "0 20px 50px rgba(0,0,0,0.25)",
           }}
