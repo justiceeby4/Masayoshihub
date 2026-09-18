@@ -16,7 +16,6 @@ import {
   money,
 } from "@/lib/store";
 
-import AddToCartButton from "@/components/AddToCartButton";
 
 export default function MarketplaceClient({
   initialCategory = "All",
@@ -155,10 +154,6 @@ export default function MarketplaceClient({
                   )}
                 </div>
 
-                <AddToCartButton
-                  product={p}
-                  compact
-                />
               </div>
             </div>
           </article>
