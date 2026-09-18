@@ -208,6 +208,7 @@ export default function DashboardPage() {
                     margin: "8px 0 0",
                     fontSize: "38px",
                     lineHeight: 1,
+                    color: "#17152a",
                   }}
                 >
                   ₦
