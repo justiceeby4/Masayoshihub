@@ -163,7 +163,7 @@ setUsername(user?.user_metadata?.username ?? "");
                   color: "#17152a",
                 }}
               >
-                Welcome back! 👋
+                Welcome back, {username}! 👋
               </h1>
 
               <p
