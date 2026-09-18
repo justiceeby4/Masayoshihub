@@ -67,7 +67,7 @@ export default function DashboardPage() {
         minHeight: "100vh",
         background: "#f6f7fb",
         color: "white",
-        paddingBottom: "110px",
+        paddingBottom: "230px",
       }}
     >
       <div
