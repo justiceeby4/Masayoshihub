@@ -153,6 +153,7 @@ export default function DashboardPage() {
                   margin: 0,
                   fontSize: "30px",
                   lineHeight: 1.1,
+                  color: "#17152a",
                 }}
               >
                 Welcome back! 👋
