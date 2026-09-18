@@ -149,11 +149,11 @@ export default function MarketplaceClient({
     : money(p.price)}
 </strong>
 
-                  {p.old && (
-                    <del>
-                      {money(p.old)}
-                    </del>
-                  )}
+                  {p.old > 0 && (
+  <del>
+    {money(p.old)}
+  </del>
+)}
                 </div>
 
               </div>
