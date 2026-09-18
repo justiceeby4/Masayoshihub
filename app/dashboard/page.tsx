@@ -145,7 +145,7 @@ setUsername(user?.user_metadata?.username ?? "");
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                background: "rgba(255,255,255,0.18)",
+                background: "#6D3DF5",
                 border: "1px solid rgba(255,255,255,0.2)",
                 fontSize: "30px",
                 fontWeight: 800,
