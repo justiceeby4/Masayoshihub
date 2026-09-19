@@ -35,6 +35,9 @@ export default function DashboardPage() {
     setBalance(Number(data));
   }
 };
+    loadBalance();
+}, []);
+  
   const quickActions = [
     {
       name: "Buy Account",
