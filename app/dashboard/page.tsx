@@ -10,32 +10,31 @@ export default function DashboardPage() {
   const [transactions, setTransactions] = useState<any[]>([]);
 
   useEffect(() => {
-    const loadBalance = async () => {
-      const supabase = createClient();
+    
+   const loadBalance = async () => {
+  const supabase = createClient();
 
-      const { data, error } = await supabase.rpc(
-        "get_my_wallet_balance"
-      );
-       const { data: transactionData, error: transactionError } =
-  await supabase.rpc("get_my_wallet_transactions");
+  const { data, error } = await supabase.rpc(
+    "get_my_wallet_balance"
+  );
 
-if (!transactionError) {
-  setTransactions(transactionData ?? []);
-}
-    const {
-  data: { user },
-} = await supabase.auth.getUser();
+  const { data: transactionData, error: transactionError } =
+    await supabase.rpc("get_my_wallet_transactions");
 
-setUsername(user?.user_metadata?.username ?? "");
+  if (!transactionError) {
+    setTransactions(transactionData ?? []);
+  }
 
-      if (!error && data !== null) {
-        setBalance(Number(data));
-      }
-    };
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-    loadBalance();
-  }, []);
+  setUsername(user?.user_metadata?.username ?? "");
 
+  if (!error && data !== null) {
+    setBalance(Number(data));
+  }
+};
   const quickActions = [
     {
       name: "Buy Account",
